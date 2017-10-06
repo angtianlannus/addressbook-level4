@@ -45,4 +45,11 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
+    /**
+     * sort the filtered person List by given {@code attribute}.
+     * return true if the attribute is valid else return false.
+     * @throw NullPointerException if {@code attribute} is null.
+     */
+    boolean sortFilteredPersonListbyAttribute(String attribte);
+
 }
