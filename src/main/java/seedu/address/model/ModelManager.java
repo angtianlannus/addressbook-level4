@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
@@ -15,7 +16,6 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
-import seedu.address.logic.commands.SortCommand;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -85,53 +85,10 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
-    public boolean sortFilteredPersonListbyAttribute(String attribute){
-        requireNonNull(attribute);
+    public boolean sortFilteredPersonListByAttribute(String targetAttribute){
+        requireNonNull(targetAttribute);
+        return addressBook.sortByAttribute(targetAttribute);
 
-        switch(attribute){
-            case "name":
-                sortByName(filteredPersons);
-                return true;
-            case "email":
-                sortByEmail(filteredPersons);
-                return true;
-            case "phone":
-                sortByPhoneNumber(filteredPersons);
-                return true;
-            default:
-                return false;
-        }
-
-    }
-
-    public List<ReadOnlyPerson> sortByPhoneNumber(List<ReadOnlyPerson> listToSort){
-        Collections.sort(listToSort, new Comparator<ReadOnlyPerson>() {
-            @Override
-            public int compare(ReadOnlyPerson firstPerson, ReadOnlyPerson secondPerson) {
-                return firstPerson.getPhone().value.compareTo(secondPerson.getPhone().value);
-            }
-        });
-        return listToSort;
-    }
-
-    public List<ReadOnlyPerson> sortByEmail(List<ReadOnlyPerson> listToSort){
-        Collections.sort(listToSort, new Comparator<ReadOnlyPerson>() {
-            @Override
-            public int compare(ReadOnlyPerson firstPerson, ReadOnlyPerson secondPerson) {
-                return firstPerson.getEmail().value.compareTo(secondPerson.getEmail().value);
-            }
-        });
-        return listToSort;
-    }
-
-    public List<ReadOnlyPerson> sortByName(List<ReadOnlyPerson> listToSort){
-        Collections.sort(listToSort, new Comparator<ReadOnlyPerson>() {
-            @Override
-            public int compare(ReadOnlyPerson firstPerson, ReadOnlyPerson secondPerson) {
-                return firstPerson.getName().fullName.compareTo(secondPerson.getName().fullName);
-            }
-        });
-        return listToSort;
     }
 
 

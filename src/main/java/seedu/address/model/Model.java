@@ -50,6 +50,6 @@ public interface Model {
      * return true if the attribute is valid else return false.
      * @throw NullPointerException if {@code attribute} is null.
      */
-    boolean sortFilteredPersonListbyAttribute(String attribte);
+    boolean sortFilteredPersonListByAttribute(String attribute);
 
 }

@@ -8,7 +8,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 /**
  * Parses input arguments and creates a new SortCommand object
  */
-public class SortCommandParser {
+public class SortCommandParser implements Parser<SortCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the SortCommand
@@ -24,7 +24,5 @@ public class SortCommandParser {
 
         return new SortCommand(trimmedArgs);
     }
-
-
 
 }

@@ -2,9 +2,12 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import javafx.collections.transformation.FilteredList;
 import org.fxmisc.easybind.EasyBind;
 
 import javafx.collections.FXCollections;
@@ -101,6 +104,39 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public ObservableList<ReadOnlyPerson> asObservableList() {
         return FXCollections.unmodifiableObservableList(mappedList);
+    }
+
+    public boolean sort(String attribute){
+        boolean isAttributeValid = true;
+
+        switch(attribute){
+            case "name":
+                sortByName();
+                break;
+            case "email":
+                sortByEmail();
+                break;
+            case "phone":
+                sortByPhoneNumber();
+                break;
+            default:
+                isAttributeValid = false;
+                break;
+        }
+
+        return isAttributeValid;
+    }
+
+    public void sortByPhoneNumber(){
+        Collections.sort(internalList, Comparator.comparing(firstPerson -> firstPerson.getPhone().value));
+    }
+
+    public void sortByEmail(){
+        Collections.sort(internalList, Comparator.comparing(firstPerson -> firstPerson.getEmail().value));
+    }
+
+    public void sortByName(){
+        Collections.sort(internalList, Comparator.comparing(firstPerson -> firstPerson.getName().fullName));
     }
 
     @Override

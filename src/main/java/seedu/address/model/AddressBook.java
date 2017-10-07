@@ -175,6 +175,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.asObservableList();
     }
 
+    public boolean sortByAttribute(String givenAttribute){
+        return persons.sort(givenAttribute);
+    }
+
     @Override
     public ObservableList<Tag> getTagList() {
         return tags.asObservableList();
