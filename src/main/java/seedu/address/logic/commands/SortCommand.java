@@ -25,6 +25,7 @@ public class SortCommand extends Command {
             + "Example: " + COMMAND_WORD + " name";
 
     public static final String MESSAGE_LIST_SORT_SUCCESS = "List sorted successfully by %1$s";
+
     public static final String MESSAGE_INVALID_ATTRIBUTE = "Invalid attribute\n"+
             "Please select one of these attributes: name, phone, email";
 
