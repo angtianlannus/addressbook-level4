@@ -143,14 +143,25 @@ Format: `select INDEX`
 * The index *must be a positive integer* `1, 2, 3, ...`
 ****
 
+=== Locating persons by name: `sort`
+
+Sort the list by given attribute. +
+Format: `find ATTRIBUTE`
+
+****
+* The search is case sensitive.
+* This function will sort the list by one of the three valid attributes: name, email, phone.
+* Attribute must be given.
+* Attribute name sort list by name of person in alpabetical order.
+* Attribute email sort list by person's Email in alphabetical order.
+* Attribute phone sort list by person's phone number in increasing order.
+****
+
 Examples:
 
 * `list` +
-`select 2` +
-Selects the 2nd person in the address book.
-* `find Betsy` +
-`select 1` +
-Selects the 1st person in the results of the `find` command.
+* `sort email` +
+Return a sorted list by Email
 
 === Listing entered commands : `history`
 
