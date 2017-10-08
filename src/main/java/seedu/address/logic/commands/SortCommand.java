@@ -1,14 +1,6 @@
 package seedu.address.logic.commands;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.ReadOnlyPerson;
-
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-
 
 /***
  * Sort list base on attributes
@@ -26,8 +18,8 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_LIST_SORT_SUCCESS = "List sorted successfully by %1$s";
 
-    public static final String MESSAGE_INVALID_ATTRIBUTE = "Invalid attribute\n"+
-            "Please select one of these attributes: name, phone, email";
+    public static final String MESSAGE_INVALID_ATTRIBUTE = "Invalid attribute\n"
+            + "Please select one of these attributes: name, phone, email";
 
     private final String targetAttribute;
 
@@ -35,15 +27,16 @@ public class SortCommand extends Command {
         this.targetAttribute = attribute;
     }
 
+    @Override
     public CommandResult execute() throws CommandException {
 
         StringBuilder sortAttribute = new StringBuilder(targetAttribute);
         sortAttribute.setCharAt(0, Character.toUpperCase(targetAttribute.charAt(0)));
 
         //model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        if(model.sortFilteredPersonListByAttribute(targetAttribute)){
-            return new CommandResult(String.format(MESSAGE_LIST_SORT_SUCCESS,sortAttribute));
-        }else{
+        if (model.sortFilteredPersonListByAttribute(targetAttribute)) {
+            return new CommandResult(String.format(MESSAGE_LIST_SORT_SUCCESS, sortAttribute));
+        } else {
             return new CommandResult(MESSAGE_INVALID_ATTRIBUTE);
         }
 

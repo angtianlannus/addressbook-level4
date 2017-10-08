@@ -175,7 +175,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.asObservableList();
     }
 
-    public boolean sortByAttribute(String givenAttribute){
+    public boolean sortByAttribute(String givenAttribute) {
         return persons.sort(givenAttribute);
     }
 

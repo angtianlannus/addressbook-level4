@@ -3,11 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.function.Predicate;
-import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
@@ -85,7 +81,8 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
-    public boolean sortFilteredPersonListByAttribute(String targetAttribute){
+    @Override
+    public boolean sortFilteredPersonListByAttribute(String targetAttribute) {
         requireNonNull(targetAttribute);
         return addressBook.sortByAttribute(targetAttribute);
     }

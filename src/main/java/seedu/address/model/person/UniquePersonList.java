@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import javafx.collections.transformation.FilteredList;
 import org.fxmisc.easybind.EasyBind;
 
 import javafx.collections.FXCollections;
@@ -18,7 +17,7 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- *
+ * <p>
  * Supports a minimal set of list operations.
  *
  * @see Person#equals(Object)
@@ -55,7 +54,7 @@ public class UniquePersonList implements Iterable<Person> {
      * Replaces the person {@code target} in the list with {@code editedPerson}.
      *
      * @throws DuplicatePersonException if the replacement is equivalent to another existing person in the list.
-     * @throws PersonNotFoundException if {@code target} could not be found in the list.
+     * @throws PersonNotFoundException  if {@code target} could not be found in the list.
      */
     public void setPerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
             throws DuplicatePersonException, PersonNotFoundException {
@@ -106,36 +105,47 @@ public class UniquePersonList implements Iterable<Person> {
         return FXCollections.unmodifiableObservableList(mappedList);
     }
 
-    public boolean sort(String attribute){
+    /**
+     * Sort list by attribute
+     *
+     * @param attribute
+     * @return true if attribute is valid and false otherwise
+     */
+    public boolean sort(String attribute) {
         boolean isAttributeValid = true;
 
-        switch(attribute){
-            case "name":
-                sortByName();
-                break;
-            case "email":
-                sortByEmail();
-                break;
-            case "phone":
-                sortByPhoneNumber();
-                break;
-            default:
-                isAttributeValid = false;
-                break;
+        switch (attribute) {
+
+        case "name":
+            sortByName();
+            break;
+
+        case "email":
+            sortByEmail();
+            break;
+
+        case "phone":
+            sortByPhoneNumber();
+            break;
+
+        default:
+            isAttributeValid = false;
+            break;
+
         }
 
         return isAttributeValid;
     }
 
-    public void sortByPhoneNumber(){
+    public void sortByPhoneNumber() {
         Collections.sort(internalList, Comparator.comparing(firstPerson -> firstPerson.getPhone().value));
     }
 
-    public void sortByEmail(){
+    public void sortByEmail() {
         Collections.sort(internalList, Comparator.comparing(firstPerson -> firstPerson.getEmail().value));
     }
 
-    public void sortByName(){
+    public void sortByName() {
         Collections.sort(internalList, Comparator.comparing(firstPerson -> firstPerson.getName().fullName));
     }
 
@@ -148,7 +158,7 @@ public class UniquePersonList implements Iterable<Person> {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UniquePersonList // instanceof handles nulls
-                        && this.internalList.equals(((UniquePersonList) other).internalList));
+                && this.internalList.equals(((UniquePersonList) other).internalList));
     }
 
     @Override
