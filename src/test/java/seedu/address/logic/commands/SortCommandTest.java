@@ -1,15 +1,16 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortCommand.
@@ -17,7 +18,8 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 public class SortCommandTest {
 
-    private Model model, expectedModel;
+    private Model model;
+    private Model expectedModel;
     private SortCommand sortCommand;
 
     @Before
@@ -32,7 +34,7 @@ public class SortCommandTest {
         sortCommand = new SortCommand("name");
         sortCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         assertCommandSuccess(sortCommand, model,
-                String.format(SortCommand.MESSAGE_LIST_SORT_SUCCESS,"Name"),
+                String.format(SortCommand.MESSAGE_LIST_SORT_SUCCESS, "Name"),
                 expectedModel);
     }
 

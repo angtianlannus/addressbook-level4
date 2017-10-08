@@ -135,7 +135,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean sortFilteredPersonListByAttribute(String attribute){
+        public boolean sortFilteredPersonListByAttribute(String attribute) {
             fail("This method should not be called");
             return false;
         }
