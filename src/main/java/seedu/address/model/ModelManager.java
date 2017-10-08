@@ -88,7 +88,6 @@ public class ModelManager extends ComponentManager implements Model {
     public boolean sortFilteredPersonListByAttribute(String targetAttribute){
         requireNonNull(targetAttribute);
         return addressBook.sortByAttribute(targetAttribute);
-
     }
 
 

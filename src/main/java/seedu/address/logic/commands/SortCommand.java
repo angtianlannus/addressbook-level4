@@ -40,7 +40,7 @@ public class SortCommand extends Command {
         StringBuilder sortAttribute = new StringBuilder(targetAttribute);
         sortAttribute.setCharAt(0, Character.toUpperCase(targetAttribute.charAt(0)));
 
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        //model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         if(model.sortFilteredPersonListByAttribute(targetAttribute)){
             return new CommandResult(String.format(MESSAGE_LIST_SORT_SUCCESS,sortAttribute));
         }else{
