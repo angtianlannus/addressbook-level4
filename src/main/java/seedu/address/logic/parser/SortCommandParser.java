@@ -4,6 +4,7 @@ import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_MISSING_ATTRIBUTE;
 
 /**
  * Parses input arguments and creates a new SortCommand object
@@ -20,7 +21,7 @@ public class SortCommandParser implements Parser<SortCommand> {
 
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_MISSING_ATTRIBUTE, SortCommand.MESSAGE_USAGE));
         }
 
         return new SortCommand(trimmedArgs);
