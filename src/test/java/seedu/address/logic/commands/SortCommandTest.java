@@ -13,9 +13,7 @@ import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 
-import java.util.Collections;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortCommand.
@@ -36,9 +34,9 @@ public class SortCommandTest {
     @Test
     public void equals() {
 
-        SortCommand sortByName =new SortCommand("name");
-        SortCommand sortByAddress =new SortCommand("address");
-        SortCommand sortByPhoneNumber =new SortCommand("phone");
+        SortCommand sortByName = new SortCommand("name");
+        SortCommand sortByAddress = new SortCommand("address");
+        SortCommand sortByPhoneNumber = new SortCommand("phone");
 
         // same object -> returns true
         assertTrue(sortByAddress.equals(sortByAddress));
