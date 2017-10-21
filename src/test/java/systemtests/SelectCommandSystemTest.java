@@ -20,18 +20,17 @@ import seedu.address.model.Model;
 public class SelectCommandSystemTest extends AddressBookSystemTest {
     @Test
     public void select() {
-        String command;
         /* Case: select the first card in the lesson list, command with leading spaces and trailing spaces
          * -> selected
-
+         */
         String command = "   " + SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_LESSON.getOneBased() + "   ";
         assertCommandSuccess(command, INDEX_FIRST_LESSON);
-*/
-        /* Case: select the last card in the lesson list -> selected
+
+        /* Case: select the last card in the lesson list -> selected */
         Index lessonCount = Index.fromOneBased(getTypicalLessons().size());
         command = SelectCommand.COMMAND_WORD + " " + lessonCount.getOneBased();
         assertCommandSuccess(command, lessonCount);
-*/
+
         /* Case: undo previous selection -> rejected */
         command = UndoCommand.COMMAND_WORD;
         String expectedResultMessage = UndoCommand.MESSAGE_FAILURE;
@@ -42,19 +41,17 @@ public class SelectCommandSystemTest extends AddressBookSystemTest {
         expectedResultMessage = RedoCommand.MESSAGE_FAILURE;
         assertCommandFailure(command, expectedResultMessage);
 
-        /* Case: select the middle card in the lesson list -> selected
+        /* Case: select the middle card in the lesson list -> selected */
         Index middleIndex = Index.fromOneBased(lessonCount.getOneBased() / 2);
         command = SelectCommand.COMMAND_WORD + " " + middleIndex.getOneBased();
         assertCommandSuccess(command, middleIndex);
-        */
 
         /* Case: invalid index (size + 1) -> rejected */
         int invalidIndex = getModel().getFilteredLessonList().size() + 1;
         assertCommandFailure(SelectCommand.COMMAND_WORD + " " + invalidIndex, MESSAGE_INVALID_DISPLAYED_INDEX);
 
-        /* Case: select the current selected card -> selected
+        /* Case: select the current selected card -> selected */
         assertCommandSuccess(command, middleIndex);
-        */
 
         /* Case: filtered lesson list, select index within bounds of address book but out of bounds of lesson list
          * -> rejected
@@ -63,12 +60,11 @@ public class SelectCommandSystemTest extends AddressBookSystemTest {
         invalidIndex = getModel().getAddressBook().getLessonList().size();
         assertCommandFailure(SelectCommand.COMMAND_WORD + " " + invalidIndex, MESSAGE_INVALID_DISPLAYED_INDEX);
 
-        /* Case: filtered lesson list, select index within bounds of address book and lesson list -> selected
+        /* Case: filtered lesson list, select index within bounds of address book and lesson list -> selected */
         Index validIndex = Index.fromOneBased(1);
         assert validIndex.getZeroBased() < getModel().getFilteredLessonList().size();
         command = SelectCommand.COMMAND_WORD + " " + validIndex.getOneBased();
         assertCommandSuccess(command, validIndex);
-        */
 
         /* Case: invalid index (0) -> rejected */
         assertCommandFailure(SelectCommand.COMMAND_WORD + " " + 0,
