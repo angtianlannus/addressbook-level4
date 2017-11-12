@@ -17,7 +17,7 @@ By: `CS2103AUG2017-W13-B4`      Since: `Oct 2017`      Licence: `MIT`
 
 == Introduction
 // tag::intro[]
-ModU is a software designed to assist teachers and lecturers to plan their weekly teaching schedule.
+ModU is a software designed to assist teachers and lecturers to plan their weekly teaching schedule. 
 
 There are many ways to improve and extend the functionality of this software and this guide provides essential information to help you get started. This developer guide contains information of the architecture design of this software, implementation of the existing commands that are accessible for the users and other useful information.
 // end::intro[]
